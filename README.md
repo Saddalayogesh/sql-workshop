@@ -150,7 +150,3 @@ SOURCE queries.sql;
 Hosted on GitHub
 
 ---
-
-## ⭐ Support
-
-If you found this helpful, consider giving it a ⭐ on GitHub!
