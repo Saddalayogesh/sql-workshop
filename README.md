@@ -144,9 +144,3 @@ SOURCE queries.sql;
 * Build a mini project using this database
 
 ---
-
-## 🔗 Repository
-
-Hosted on GitHub
-
----
