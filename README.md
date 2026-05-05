@@ -2,125 +2,120 @@
 
 ## 🚀 Overview
 
-This project contains SQL scripts created during a hands-on SQL workshop. It demonstrates database creation, table design, data insertion, and various query operations used in real-world applications.
+This project contains SQL scripts created during a hands-on SQL workshop.
+It demonstrates database creation, table design, data insertion, and various query operations used in real-world applications.
 
 ---
 
 ## 🗂️ Project Structure
 
-```
+```id="v1mxq5"
 sql_workshop/
 
-├── schema.sql      # Database & table creation
+├── basics_test_db/
+│   ├── schema.sql
+│   ├── queries.sql
 
-├── queries.sql     # SQL queries for practice
+├── ecommerce_db/
+│   ├── schema.sql
+│   ├── queries.sql
 
-└── README.md       # Project documentation
+└── README.md
 ```
 
 ---
 
-## 🧱 Database Design
+# 🧪 1. SQL Workshop Project (Basics)
 
 ### 📌 Database: `test_db`
 
-The project includes three main tables:
+### 🧱 Tables
 
-### 👤 Customers
+* 👤 Customers → id, name, email, city, signup_date
+* 🛍️ Products → id, name, category, price, stock
+* 📦 Orders → id, customer_id, product_id, quantity, total_amount, status
 
-* Stores customer details
-* Fields: `id`, `name`, `email`, `city`, `signup_date`
+### 🔧 Features Covered
 
-### 🛍️ Products
+* SELECT queries
+* WHERE filtering (AND, OR, IN, BETWEEN, LIKE)
+* ORDER BY sorting
+* Aggregations (COUNT, SUM, AVG)
+* Subqueries
 
-* Stores product information
-* Fields: `id`, `name`, `category`, `price`, `stock`
+### 🧪 Sample Query
 
-### 📦 Orders
-
-* Stores order transactions
-* Fields: `id`, `customer_id`, `product_id`, `quantity`, `order_date`, `total_amount`, `status`
-* Includes **foreign key relationships**
-
----
-
-## 🔧 Features Covered
-
-### ✅ Basic Queries
-
-* SELECT statements
-* Column selection
-* Aliases (`AS`)
-
-### 🔍 Filtering Data
-
-* WHERE conditions
-* AND / OR operators
-* IN, BETWEEN
-* LIKE patterns
-
-### 📊 Sorting
-
-* ORDER BY (ASC, DESC)
-* Multiple column sorting
-
-### 📈 Aggregations
-
-* COUNT()
-* SUM()
-* AVG()
-
-### 🔁 Subqueries
-
-* MAX / MIN using subqueries
-
----
-
-## 🧪 Example Queries
-
-```sql
--- Get all customers
-SELECT * FROM customers;
-
--- Filter products
-SELECT * FROM products 
+```sql id="cf1wvy"
+SELECT * FROM products
 WHERE price > 4000 AND stock >= 40;
+```
 
--- Aggregate example
-SELECT COUNT(*) AS total_orders FROM orders;
+---
 
--- Subquery example
-SELECT *
-FROM products
-WHERE price = (SELECT MAX(price) FROM products);
+# 🛒 2. E-Commerce Database Project
+
+### 📌 Database: `e_commerce_db`
+
+### 🧱 Tables
+
+* Customers
+* Categories
+* Products
+* Addresses
+* Carts & Cart Items
+* Orders & Order Items
+* Payments
+* Shipments
+
+### 🔗 Relationships
+
+* Customers → Orders → Order Items → Products
+* Products → Categories
+* Orders → Payments → Shipments
+* Customers → Carts → Cart Items
+
+### 🔧 Features Covered
+
+* Complex joins
+* Multi-table relationships
+* Aggregations and analytics
+* Real-world business logic
+
+### 🧪 Sample Query
+
+```sql id="j6n7k1"
+SELECT c.first_name, SUM(o.total_amount) AS total_spent
+FROM customers c
+JOIN orders o ON c.id = o.customer_id
+GROUP BY c.id;
 ```
 
 ---
 
 ## ▶️ How to Run
 
-1. Install a database system like MySQL
-2. Open your SQL tool (MySQL Workbench / CLI)
-3. Run the schema file:
+### Run Basics Project
 
-```sql
-SOURCE schema.sql;
+```sql id="t0rt6g"
+SOURCE basics_test_db/schema.sql;
+SOURCE basics_test_db/queries.sql;
 ```
 
-4. Run queries:
+### Run E-Commerce Project
 
-```sql
-SOURCE queries.sql;
+```sql id="0hgt9x"
+SOURCE ecommerce_db/schema.sql;
+SOURCE ecommerce_db/queries.sql;
 ```
 
 ---
 
 ## 🧠 Learning Outcomes
 
-* Understanding relational database structure
+* Understanding relational database design
 * Writing efficient SQL queries
-* Using filtering, sorting, and aggregation
-* Working with real-world data scenarios
+* Working with joins, aggregations, and subqueries
+* Building real-world database systems
 
 ---
 
@@ -133,14 +128,13 @@ SOURCE queries.sql;
 
 ## 📌 Author
 
-* Yogesh
+**Saddala Yogesh**
 
 ---
 
 ## 🌟 Future Improvements
 
-* Add JOIN queries
-* Add indexes for performance
-* Build a mini project using this database
-
----
+* Add advanced JOIN queries
+* Implement indexing for performance
+* Build backend using Java (JDBC / Spring Boot)
+* Create a frontend interface for database interaction
