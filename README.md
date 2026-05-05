@@ -2,8 +2,8 @@
 
 ## 🚀 Overview
 
-This project contains SQL scripts created during a hands-on SQL workshop.
-It demonstrates database creation, table design, data insertion, and various query operations used in real-world applications.
+📊 This repository includes a basic SQL workshop project (test_db) and a real-world e-commerce database system (e_commerce_db).  
+🚀 It demonstrates both foundational and advanced SQL concepts, including table design, relationships, and practical query operations.
 
 ---
 
